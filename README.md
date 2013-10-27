@@ -1,7 +1,7 @@
 pause-clementine-on-lock
 ========================
 
-Pause [Clementine](http://www.clementine-player.org/) when the Windows session is locked.
+Pause [Clementine](http://www.clementine-player.org/) when the Windows session is locked using the [remote control feature](https://code.google.com/p/clementine-player/wiki/RemoteControl).
 
 Download
 ========
