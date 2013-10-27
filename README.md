@@ -10,7 +10,8 @@ Build
     # with powershell
     $env:CGO_LDFLAGS="-lwtsapi32";
     
-    go build
+    # windowsgui prevents a console window from showing (remove to debug)
+    go build -ldflags -H=windowsgui
 
 Usage
 =====
