@@ -13,11 +13,6 @@ To build you need [go1.1.2](http://golang.org/) and [MinGW](http://www.mingw.org
 
 Ensure that `gcc.exe` is in your `PATH` environment variable.
 
-    set CGO_LDFLAGS=-lwtsapi32
-    
-    # with powershell
-    $env:CGO_LDFLAGS="-lwtsapi32";
-    
     # windowsgui prevents a console window from showing (remove to debug)
     go build -ldflags -H=windowsgui
 
