@@ -1,0 +1,6 @@
+[clementine]
+host = "127.0.0.1"
+port = 5500
+authCode = 28615
+onLock = "STOP"
+onUnLock = "PLAY"
