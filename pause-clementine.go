@@ -86,7 +86,7 @@ func main() {
 		}
 	}()
 
-	session_notifications.Subscribe(changes, closeChan)
+	session_notifications.Subscribe(changes, nil, closeChan)
 
 	// ctrl+c to quit
 	<-quit
