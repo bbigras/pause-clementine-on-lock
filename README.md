@@ -5,6 +5,7 @@ Pause [Clementine](http://www.clementine-player.org/) when the Windows session i
 
 Download
 ========
+- [pause-clementine-on-lock-32.7z](https://s3.amazonaws.com/pause-clementine-on-lock/pause-clementine-on-lock-32.7z) 32-bit (594 KB)
 - [pause-clementine-on-lock-64.7z](https://s3.amazonaws.com/pause-clementine-on-lock/pause-clementine-on-lock-64.7z) 64-bit (606.1 KB)
 
 Build
