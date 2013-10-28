@@ -61,32 +61,35 @@ func main() {
 
 	quit := make(chan int)
 
-	changes := make(chan int, 100)
+	chanMessages := make(chan session_notifications.Message, 100)
 	closeChan := make(chan int)
 
 	go func() {
 		for {
 			select {
-			case c := <-changes:
-				switch c {
-				case session_notifications.WTS_SESSION_LOCK:
-					log.Println("session locked")
-					err := HandleEvent(cfg.Clementine.OnLock, &clementine)
-					if err != nil {
-						log.Println("Error: ", err.Error())
-					}
-				case session_notifications.WTS_SESSION_UNLOCK:
-					log.Println("session unlocked")
-					err := HandleEvent(cfg.Clementine.OnUnLock, &clementine)
-					if err != nil {
-						log.Println("Error: ", err.Error())
+			case m := <-chanMessages:
+				switch m.UMsg {
+				case session_notifications.WM_WTSSESSION_CHANGE:
+					switch m.Param {
+					case session_notifications.WTS_SESSION_LOCK:
+						log.Println("session locked")
+						err := HandleEvent(cfg.Clementine.OnLock, &clementine)
+						if err != nil {
+							log.Println("Error: ", err.Error())
+						}
+					case session_notifications.WTS_SESSION_UNLOCK:
+						log.Println("session unlocked")
+						err := HandleEvent(cfg.Clementine.OnUnLock, &clementine)
+						if err != nil {
+							log.Println("Error: ", err.Error())
+						}
 					}
 				}
 			}
 		}
 	}()
 
-	session_notifications.Subscribe(changes, nil, closeChan)
+	session_notifications.Subscribe(chanMessages, closeChan)
 
 	// ctrl+c to quit
 	<-quit
